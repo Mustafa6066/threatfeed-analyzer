@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "prompts": [
+    {
+      "id": "shift-brief",
+      "file": "shift-brief.v1.md",
+      "defaultFor": "shift",
+      "variables": ["date", "topArticles", "keywords", "mitreTop", "cveCount", "cveDays"]
+    },
+    {
+      "id": "article-analyst",
+      "file": "article-analyst.v1.md",
+      "defaultFor": "article",
+      "variables": ["articleTitle", "articleLink", "articleSummary", "matchedKeywords", "mitreTechniques"]
+    },
+    {
+      "id": "cve-digest",
+      "file": "cve-digest.v1.md",
+      "defaultFor": "cve",
+      "variables": ["date", "cveCount", "cveDays", "topCves"]
+    }
+  ]
+}

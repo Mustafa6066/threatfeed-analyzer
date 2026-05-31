@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.local
+
+# Data JSON is committed for Vercel static hosting; CI refreshes it daily.

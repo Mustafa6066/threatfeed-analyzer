@@ -1,0 +1,26 @@
+# Logs & transcripts
+logs/
+*.log
+
+# Generated HTML report (legacy)
+reports/
+
+# Pipeline state & generated data (CI regenerates these)
+data/*.json
+.threatfeed-seen.json
+
+# Node / dashboard build artifacts
+node_modules/
+dashboard/node_modules/
+dashboard/dist/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+*.tmp
+
+# Local QA / scratch
+.playwright-mcp/
+_t/
+_tmp_*.json
+_state.txt
