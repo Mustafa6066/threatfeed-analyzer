@@ -25,5 +25,7 @@ export const staggerContainer = (stagger = 0.05, delay = 0): Variants => ({
   },
 });
 
-// Standard viewport config for scroll-reveal sections.
-export const inView = { once: true, amount: 0.2 } as const;
+// Trigger as soon as any part of the section enters the viewport. Using a
+// fractional amount (e.g. 0.2) breaks on tall panels like the CVE table —
+// 20% of a 10k+ px block never fits on screen, so opacity stays at 0.
+export const inView = { once: true, amount: 0 } as const;
