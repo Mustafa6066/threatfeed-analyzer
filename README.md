@@ -4,14 +4,13 @@ Zero-token threat intelligence morning brief: PowerShell pipeline + hosted React
 
 ## Hosted dashboard (Vercel)
 
-The UI lives in [`dashboard/`](dashboard/). Deploy on Vercel with:
+**Live:** https://threatfeed-dashboard.vercel.app
 
-- **Root Directory:** `dashboard`
-- **Framework:** Vite
-- **Build Command:** `npm run build`
-- **Output Directory:** `dist`
+**GitHub:** https://github.com/Mustafa6066/threatfeed-analyzer
 
-Connect the GitHub repo in Vercel for automatic deploys on push. GitHub Actions refreshes `dashboard/public/data/` daily (06:00 UTC) and commits when feeds change, which retriggers Vercel.
+The UI lives in [`dashboard/`](dashboard/). Vercel builds from the repo root using root [`vercel.json`](vercel.json) (install/build in `dashboard/`).
+
+Connect the GitHub repo in Vercel for automatic deploys on push. GitHub Actions refreshes `dashboard/public/data/` daily (06:00 UTC) when the workflow is pushed — see note below on `workflow` scope.
 
 ## Local use
 

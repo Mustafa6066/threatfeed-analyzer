@@ -1,0 +1,67 @@
+name: Refresh Dashboard Data
+
+on:
+  schedule:
+    # Daily at 06:00 UTC — zero-token rules refresh for the hosted UI
+    - cron: '0 6 * * *'
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - 'dashboard/**'
+      - 'lib/**'
+      - 'ThreatFeed-Analyzer.ps1'
+      - 'config.json'
+      - 'Sync-DashboardData.ps1'
+      - '.github/workflows/deploy.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-dashboard
+  cancel-in-progress: true
+
+jobs:
+  refresh-and-verify:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run ThreatFeed pipeline (zero-token, no browser)
+        shell: powershell
+        run: |
+          .\ThreatFeed-Analyzer.ps1 -NoOpen -CveDays 7
+
+      - name: Sync dashboard public data
+        shell: powershell
+        run: .\Sync-DashboardData.ps1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Verify dashboard build (Vercel uses root /)
+        working-directory: dashboard
+        env:
+          VITE_BASE: /
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit refreshed data (triggers Vercel if GitHub integration is linked)
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dashboard/public/data/
+          if git diff --staged --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "chore(ci): refresh threat intel dashboard data [skip ci]"
+            git push
+          fi
