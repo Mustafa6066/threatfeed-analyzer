@@ -1,1 +1,1 @@
-{"runId":"20260613-072135","generatedAt":"2026-06-13T07:21:56.889Z","engine":"powershell","fallbackReason":null,"feedsTotal":24,"feedsOk":22,"fetched":370,"matched":132,"newArticles":132,"shiftBriefSize":10,"cveCount":1794,"nvdWarning":null}
+{"runId":"20260614-073832","generatedAt":"2026-06-14T07:40:14.879Z","engine":"powershell","fallbackReason":null,"feedsTotal":24,"feedsOk":22,"fetched":400,"matched":140,"newArticles":140,"shiftBriefSize":10,"cveCount":1784,"nvdWarning":null}
