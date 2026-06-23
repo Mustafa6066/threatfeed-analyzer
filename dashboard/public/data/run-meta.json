@@ -1,1 +1,1 @@
-{"runId":"20260622-080533","generatedAt":"2026-06-22T08:05:48.698Z","engine":"powershell","fallbackReason":null,"feedsTotal":24,"feedsOk":22,"fetched":390,"matched":120,"newArticles":120,"shiftBriefSize":10,"cveCount":0,"nvdWarning":"NVD fetch failed after retries; CVE list may be incomplete."}
+{"runId":"20260623-071802","generatedAt":"2026-06-23T07:20:08.192Z","engine":"powershell","fallbackReason":null,"feedsTotal":24,"feedsOk":22,"fetched":390,"matched":112,"newArticles":112,"shiftBriefSize":10,"cveCount":1631,"nvdWarning":null}
